@@ -1,0 +1,11 @@
+version: '2'
+services:
+  midea2mqtt:
+    container_name: midea2mqtt
+    image: midea2mqtt
+#    restart: always
+
+    network_mode: host
+
+    volumes:
+      - /data/midea2mqtt/data:/etc/opt/midea2mqtt:rw

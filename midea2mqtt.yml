@@ -1,0 +1,17 @@
+general:
+  pollrate: 60
+  loglevel: INFO
+
+mqtt:
+  broker: broker.mqtt.host
+  port: 1883
+  username: 
+  password: 
+  clientid: midea2mqtt
+  basetopic: midea
+
+devices:
+  - topic: 0_ug/hobby/entfeuchter
+    address: <past ip here>
+    token: <paste token here>
+    key: <paset key here>
