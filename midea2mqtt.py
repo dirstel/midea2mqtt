@@ -200,5 +200,7 @@ class midea_appliance():
                 _LOGGER.error(f"parseSetMsg(): unable to parse yaml from {payload}")
                 _LOGGER.debug(exception)
 
+        return True
+
 # Start app
 mideaMqtt = midea2mqtt()
