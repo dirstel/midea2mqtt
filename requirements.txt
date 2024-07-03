@@ -1,0 +1,3 @@
+midea-beautiful-air==0.10.5
+paho-mqtt==2.1.0
+PyYAML==6.0.1
