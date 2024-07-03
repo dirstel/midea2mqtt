@@ -1,9 +1,8 @@
 FROM python:3
 
 # install dependancies
-RUN pip install "paho-mqtt<2.2.0"
-RUN pip install --upgrade pyyaml
-RUN pip install --upgrade midea-beautiful-air
+COPY requirements.txt /requirements.txt
+RUN pip install -r requirements.txt
 
 # make app directory and add source
 RUN mkdir /opt/midea2mqtt
