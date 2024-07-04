@@ -168,22 +168,20 @@ class midea_appliance():
             self._appliance = appliance_state(
                 address = self.address, token = self.token, key = self.key,
             )
+            self._attribs = ["running", "fan_speed", "target_humidity", "ion_mode", "mode", 
+                "current_humidity", "current_temperature", "tank_level", "tank_full",
+                "model", "type", "name"]
             _LOGGER.info(f"connected device {self.topic}")
-
-        return self._appliance.online
-
+ 
     def refresh(self):
         self._appliance.refresh()
 
         # prepare state as json (=> publish via mqtt)
         data = {}
-        data['running'] = self._appliance.state.running
-        data['fan_speed'] = self._appliance.state.fan_speed
-        data['target_humidity'] = self._appliance.state.target_humidity
-        data['current_humidity'] = self._appliance.state.current_humidity
-        data['tank_full'] = self._appliance.state.tank_full
-        data['tank_level'] = self._appliance.state.tank_level
+        for attribute in self._attribs:
+            data[attribute] = getattr(self._appliance.state, attribute)
         payload = json.dumps(data)
+        _LOGGER.debug(self._appliance)
 
         return payload
 
